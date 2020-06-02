@@ -1,0 +1,90 @@
+
+* { cursor: none; }
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;  
+}
+
+body {
+    overflow: hidden;
+    background-color: black;
+
+    background-image: url('http://cs.gettysburg.edu/~duncjo01/archive/patterns/windows/ancestry/FeatherTexture.bmp');
+}
+
+#cursor {
+    position: absolute;
+    pointer-events: none;
+    z-index: 99;
+}
+
+/*
+#test::before {
+    content: "hello ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0; 
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); 
+    background-size: 100% 3px, 3px 100%; 
+    pointer-events: none;
+}
+*/
+
+main::before {
+    position: absolute;
+    pointer-events: none;
+    content: "";
+    z-index: 100;
+    top: 0; left: 0; bottom: 0; right: 0; 
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),  
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); 
+    background-size: 100% 2px, 2px 100%; 
+}
+
+/* ==== DESKTOP ICON ==== */
+
+.icons {
+    margin-top: 10px;
+    display: grid;
+    grid-gap: 15px;
+}
+
+.shortcut-icon {
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAQAAACR313BAAAAAXNSR0IArs4c6QAAAFVJREFUGJVjjP3PgBPsYGBhYFiIU1qcgQm3XgYGBgYWZLUI8BJKM2EKIQMUwzEVoEiL45MWx2ICE6bkS2zSyDpfYpPG6/KXWBxGmr8xAaMonhhjYAAAsQEOdyiCWW8AAAAASUVORK5CYII=');
+}
+
+.desktop-icon {
+    position: relative;
+    width: 70px;
+    text-align: center;
+}
+
+.desktop-icon .icon-logo img {
+    width: 40px;
+}
+
+.desktop-icon .icon-title {
+    margin-top: 3px;
+    font-family: Tahoma;
+    font-size: 11px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.desktop-icon .icon-title.selected { 
+    background-color: royalblue; 
+    text-shadow: none;
+}
+
+.desktop-icon .shortcut-icon {
+    width: 12px;
+    margin-top: -14px;
+    margin-left: 14px;
+}

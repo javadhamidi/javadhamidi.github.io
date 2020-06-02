@@ -1,0 +1,50 @@
+
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Javad Hamidi | Portfolio Site</title>
+    <link rel="stylesheet" href="styles/default.css">
+</head>
+
+<body>
+    <img id="cursor" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAATBAMAAABW2/GaAAAAAXNSR0IArs4c6QAAABVQTFRFAAAAFRUVOzs7T09PYmJiFRUV/v7+1uwq8AAAAAV0Uk5TAAAAAADCawaxAAAAVElEQVQI1yXNwQ3AMAhDUbIBUdUBOkoPGSBq4g1g/xGCXS5PX0Jg042zX4GlRCiRSqQSqSyYBZNUklw/oZW9C8TT69jIydN3fl6PLoRb90bM2lh+AJIVG1GXP3/bAAAAAElFTkSuQmCC" alt="">
+
+    <main>
+        <div class="icons">
+            <div class="desktop-icon">
+                <div class="icon-logo">
+                    <img src="images/GitHub-Mark-32px.png" alt="">
+                </div>
+                <div class="shortcut-icon"></div>
+                <div class="icon-title">
+                    <span>Follow me on GitHub!</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px'; 
+        });
+
+        document.getElementsByClassName('desktop-icon')[0].addEventListener('click', e => {
+            console.log('clc');
+            document.getElementsByClassName('icon-title')[0].classList.add("selected"); 
+        });
+
+        document.getElementsByClassName('desktop-icon')[0].addEventListener('dblclick', e => {
+            window.open('https://github.com/javadhamidi', '_blank');
+            win.focus();
+        });
+
+        document.addEventListener('mouseenter', e => { cursor.style.display = 'block' });
+        document.addEventListener('mouseleave', e => { cursor.style.display = 'none' });
+    </script>
+</body>
+</html>
