@@ -15,7 +15,7 @@
 
     <main>
         <div class="icons">
-            <div class="desktop-icon">
+            <div class="desktop-icon" ondblclick="window.open('https://github.com/javadhamidi', '_blank'); window.focus();">
                 <div class="icon-logo">
                     <img src="images/GitHub-Mark-32px.png" alt="">
                 </div>
@@ -24,11 +24,20 @@
                     <span>Follow me on GitHub!</span>
                 </div>
             </div>
+            <div class="desktop-icon">
+                <div class="icon-logo">
+                    <img src="images/pdf-icon.png" alt="">
+                </div>
+                <div class="icon-title">
+                    <span>Javad Hamidi Resume.pdf</span>
+                </div>
+            </div>
         </div>
     </main>
 
     <script>
         const cursor = document.getElementById('cursor');
+        const desktop_icons = document.getElementsByClassName('desktop-icon');
 
         document.addEventListener('mousemove', e => {
             cursor.style.left = e.clientX + 'px';
@@ -38,14 +47,14 @@
         document.addEventListener('mouseenter', e => { cursor.style.display = 'block' });
         document.addEventListener('mouseleave', e => { cursor.style.display = 'none' });
 
-        document.getElementsByClassName('desktop-icon')[0].addEventListener('click', e => {
-            document.getElementsByClassName('icon-title')[0].classList.add("selected"); 
-        });
+        for (let index = 0; index < desktop_icons.length; index++) {
+            desktop_icons[index].addEventListener('click', e => {
+                for (let index = 0; index < desktop_icons.length; index++) 
+                    document.getElementsByClassName('icon-title')[index].classList.remove("selected"); 
 
-        document.getElementsByClassName('desktop-icon')[0].addEventListener('dblclick', e => {
-            window.open('https://github.com/javadhamidi', '_blank');
-            win.focus();
-        });
+                document.getElementsByClassName('icon-title')[index].classList.add("selected"); 
+            });
+        }
     </script>
 
 </body>

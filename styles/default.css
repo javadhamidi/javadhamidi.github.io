@@ -32,7 +32,7 @@ main::before {
     z-index: 100;
     top: 0; left: 0; bottom: 0; right: 0; 
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),  
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06) 50%, rgba(0, 255, 0, 0.02) 50%, rgba(0, 0, 255, 0.06)) 50%; 
     background-size: 100% 2px, 2px 100%; 
 }
 
@@ -56,6 +56,9 @@ main::before {
 
 .desktop-icon .icon-logo img {
     width: 40px;
+
+    /* -webkit-filter: drop-shadow(1px 1px 1px #222);
+    filter: drop-shadow(1px 1px 1px #222); */
 }
 
 .desktop-icon .icon-title {
