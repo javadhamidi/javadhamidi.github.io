@@ -79,3 +79,14 @@ main::before {
     margin-top: -14px;
     margin-left: 14px;
 }
+
+#window {
+    background-color: white;
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    border: solid #4673a7 4px;
+    border-top: solid #4673a7 20px;
+    border-radius: 5px;
+    z-index: 10;
+}
