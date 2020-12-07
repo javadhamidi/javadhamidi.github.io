@@ -16,7 +16,7 @@ body {
     overflow: hidden;
     background-color: black;
 
-    background-image: url('http://cs.gettysburg.edu/~duncjo01/archive/patterns/windows/ancestry/FeatherTexture.bmp');
+    background-image: url('../images/FeatherTexture.bmp');
 }
 
 #cursor {
