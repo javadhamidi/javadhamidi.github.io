@@ -1,109 +1,57 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Javad Hamidi - Home</title>
-
-    <link rel="stylesheet" href="styles/default.css">
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="styles/default.css">
+	<link rel="icon" href="images/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Javad Hamidi - Home</title>
 </head>
 
 <body>
-    <img id="cursor"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAATBAMAAABW2/GaAAAAAXNSR0IArs4c6QAAABVQTFRFAAAAFRUVOzs7T09PYmJiFRUV/v7+1uwq8AAAAAV0Uk5TAAAAAADCawaxAAAAVElEQVQI1yXNwQ3AMAhDUbIBUdUBOkoPGSBq4g1g/xGCXS5PX0Jg042zX4GlRCiRSqQSqSyYBZNUklw/oZW9C8TT69jIydN3fl6PLoRb90bM2lh+AJIVG1GXP3/bAAAAAElFTkSuQmCC"
-        alt="">
+	<img id="cursor"
+		src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAATBAMAAABW2/GaAAAAAXNSR0IArs4c6QAAABVQTFRFAAAAFRUVOzs7T09PYmJiFRUV/v7+1uwq8AAAAAV0Uk5TAAAAAADCawaxAAAAVElEQVQI1yXNwQ3AMAhDUbIBUdUBOkoPGSBq4g1g/xGCXS5PX0Jg042zX4GlRCiRSqQSqSyYBZNUklw/oZW9C8TT69jIydN3fl6PLoRb90bM2lh+AJIVG1GXP3/bAAAAAElFTkSuQmCC"
+		alt="">
 
-    <main>
-        <div class="icons">
-            <div class="i desktop-icon"
-                ondblclick="window.open('https://github.com/javadhamidi', '_blank'); window.focus();">
-                <div class="i icon-logo">
-                    <img class="i" src="images/GitHub-Mark-32px.png" alt="">
-                </div>
-                <div class="i shortcut-icon"></div>
-                <div class="i icon-title">
-                    <span class="i">Follow me on GitHub!</span>
-                </div>
-            </div>
-            <div class="i desktop-icon">
-                <div class="i icon-logo">
-                    <img class="i" src="images/pdf-icon.png" alt="">
-                </div>
-                <div class="i icon-title">
-                    <span class="i">Javad Hamidi Resume.pdf</span>
-                </div>
-            </div>
-            <div class="i desktop-icon"
-                ondblclick="window.open('https://www.linkedin.com/in/javadhamidiv/', '_blank'); window.focus();">
-                <div class="i icon-logo">
-                    <img class="i" src="images/LI-In-Bug.png" alt="">
-                </div>
-                <div class="i shortcut-icon"></div>
-                <div class="i icon-title">
-                    <span class="i">Connect on LinkedIn</span>
-                </div>
-            </div>
-        </div>
-        
-        <div id="window" src=""></div>
-    </main>
+	<main>
+		<div class="icons">
+			<div class="i desktop-icon"
+				ondblclick="window.open('https://github.com/javadhamidi', '_blank'); window.focus();">
+				<div class="i icon-logo">
+					<img class="i" src="images/GitHub-Mark-32px.png" alt="">
+				</div>
+				<div class="i shortcut-icon"></div>
+				<div class="i icon-title">
+					<span class="i">Follow me on GitHub!</span>
+				</div>
+			</div>
+			<div class="i desktop-icon">
+				<div class="i icon-logo">
+					<img class="i" src="images/pdf-icon.png" alt="">
+				</div>
+				<div class="i icon-title">
+					<span class="i">Javad Hamidi Resume.pdf</span>
+				</div>
+			</div>
+			<div class="i desktop-icon"
+				ondblclick="window.open('https://www.linkedin.com/in/javadhamidiv/', '_blank'); window.focus();">
+				<div class="i icon-logo">
+					<img class="i" src="images/LI-In-Bug.png" alt="">
+				</div>
+				<div class="i shortcut-icon"></div>
+				<div class="i icon-title">
+					<span class="i">Connect on LinkedIn</span>
+				</div>
+			</div>
+		</div>
 
-    <script>
-        const cursor = document.getElementById('cursor');
-        const window_view = document.getElementById('window');
-        const desktop_icons = document.getElementsByClassName('desktop-icon');
+		<div id="window" style="left: 200px; top: 100px;">
+			<canvas id="bg"></canvas>
+		</div>
+	</main>
 
-        let window_clicked = false;
-        let offset_x = 0, offset_y = 0;
-
-        window_view.style.left = '200px';
-        window_view.style.top = '100px';
-
-        window_view.addEventListener('mousedown', e => { 
-            offset_x = Number(window_view.style.left.replace('px','')) - e.clientX;
-            offset_y = Number(window_view.style.top.replace('px','')) - e.clientY;
-
-            window_clicked = true;
-        });
-        document.addEventListener('mouseup', e => { window_clicked = false; });
-
-        document.addEventListener('mousemove', e => {
-            if (window_clicked) {
-                window_view.style.left = Number(e.clientX) + Number(offset_x) + 'px';
-                window_view.style.top = Number(e.clientY) + Number(offset_y) + 'px';
-            }
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        document.addEventListener('mouseenter', e => { cursor.style.display = 'block' });
-        document.addEventListener('mouseleave', e => { cursor.style.display = 'none' });
-
-
-        document.addEventListener('click', function(e) {
-            e = e || window.event;
-            let target = e.target || e.srcElement,
-                text = target.textContent || target.innerText;   
-            
-            if (!target.classList.contains('i')) {
-                for (let index = 0; index < desktop_icons.length; index++)
-                    document.getElementsByClassName('icon-title')[index].classList.remove("selected");
-            }
-        }, false);
-
-
-        for (let index = 0; index < desktop_icons.length; index++) {
-            desktop_icons[index].addEventListener('click', e => {
-                for (let index = 0; index < desktop_icons.length; index++)
-                    document.getElementsByClassName('icon-title')[index].classList.remove("selected");
-
-                document.getElementsByClassName('icon-title')[index].classList.add("selected");
-            });
-        }
-    </script>
-
+	<script type="module" src="/scripts/main.js"></script>
 </body>
 
 </html>

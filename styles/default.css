@@ -81,7 +81,7 @@ main::before {
 }
 
 #window {
-    background-color: white;
+    background-color: black;
     position: absolute;
     width: 600px;
     height: 400px;
