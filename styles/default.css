@@ -25,7 +25,7 @@ body {
     z-index: 99;
 }
 
-main::before {
+body::before {
     position: absolute;
     pointer-events: none;
     content: "";
@@ -80,7 +80,7 @@ main::before {
     margin-left: 14px;
 }
 
-#window {
+.draggable-frame {
     background-color: black;
     position: absolute;
     width: 600px;
@@ -88,5 +88,49 @@ main::before {
     border: solid #4673a7 4px;
     border-top: solid #4673a7 20px;
     border-radius: 5px;
-    z-index: 10;
+}
+
+
+.draggable-frame#blog {
+    background-color: royalblue;
+    color: white;
+    overflow: scroll;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.draggable-frame#blog h3 {
+    text-align: right;
+    background-color: navy;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.draggable-frame#blog main {
+    margin: 32px;
+}
+
+.draggable-frame#blog .entry-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin: .6rem 0;
+}
+
+.draggable-frame#blog section {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.draggable-frame#blog a {
+    inset: 0;
+    opacity: 0;
+    position: absolute;
+}
+
+.xp-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, mediumblue,lightblue,mediumblue); ;
 }

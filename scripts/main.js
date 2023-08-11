@@ -1,4 +1,3 @@
-
 import * as THREE from '/scripts/three.module.js';
 
 const scene = new THREE.Scene();
@@ -16,22 +15,38 @@ camera.position.set(-500, 200, 30);
 renderer.render(scene, camera);
 
 
+// WINDOW DRAGGING
+
+const star_window = document.getElementById('window');
+const blog_window = document.getElementById('blog');
+
 const cursor = document.getElementById('cursor');
-const window_view = document.getElementById('window');
+let window_view = blog_window;
 const desktop_icons = document.getElementsByClassName('desktop-icon');
 
 let window_clicked = false;
 let offset_x = 0, offset_y = 0;
 
-window_view.style.left = '200px';
-window_view.style.top = '100px';
-
-window_view.addEventListener('mousedown', e => {
+function clickWindow(e) {
 	offset_x = Number(window_view.style.left.replace('px', '')) - e.clientX;
 	offset_y = Number(window_view.style.top.replace('px', '')) - e.clientY;
 
 	window_clicked = true;
+}
+
+star_window.addEventListener('mousedown', e => {
+	window_view = star_window;
+	star_window.style.zIndex = +blog_window.style.zIndex + 1;
+	clickWindow(e)
 });
+
+blog_window.addEventListener('mousedown', e => {
+	window_view = blog_window;
+	blog_window.style.zIndex = +star_window.style.zIndex + 1;
+	clickWindow(e)
+});
+
+
 document.addEventListener('mouseup', e => { window_clicked = false; });
 
 document.addEventListener('mousemove', e => {
@@ -39,9 +54,10 @@ document.addEventListener('mousemove', e => {
 		window_view.style.left = Number(e.clientX) + Number(offset_x) + 'px';
 		window_view.style.top = Number(e.clientY) + Number(offset_y) + 'px';
 
-		camera.position.x = (Number(e.clientX) + Number(offset_x) - 700);
-		camera.position.y = -(Number(e.clientY) + Number(offset_y) - 300);
-
+		if (window_view == star_window) {
+			camera.position.x = (Number(e.clientX) + Number(offset_x) - 700);
+			camera.position.y = -(Number(e.clientY) + Number(offset_y) - 300);
+		}
 	}
 	cursor.style.left = e.clientX + 'px';
 	cursor.style.top = e.clientY + 'px';
@@ -73,6 +89,7 @@ for (let index = 0; index < desktop_icons.length; index++) {
 }
 
 
+// STARS
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);

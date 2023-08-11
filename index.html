@@ -26,14 +26,14 @@
 					<span class="i">Follow me on GitHub!</span>
 				</div>
 			</div>
-			<div class="i desktop-icon">
+			<!-- <div class="i desktop-icon">
 				<div class="i icon-logo">
 					<img class="i" src="images/pdf-icon.png" alt="">
 				</div>
 				<div class="i icon-title">
 					<span class="i">Javad Hamidi Resume.pdf</span>
 				</div>
-			</div>
+			</div> -->
 			<div class="i desktop-icon"
 				ondblclick="window.open('https://www.linkedin.com/in/javadhamidiv/', '_blank'); window.focus();">
 				<div class="i icon-logo">
@@ -46,12 +46,35 @@
 			</div>
 		</div>
 
-		<div id="window" style="left: 200px; top: 100px;">
+		<div class="draggable-frame" id="window" style="left: 200px; top: 100px;">
 			<canvas id="bg"></canvas>
+		</div>
+		<div class="draggable-frame" id="blog" style="left: 300px; top: 200px;">
+			<h3>Blog</h3>
+			<div class="xp-line"></div>
 		</div>
 	</main>
 
 	<script type="module" src="/scripts/main.js"></script>
+
+	<script>
+		fetch('https://blog.javadhamidi.com/')
+		.then(function(response) {
+			return response.text();
+		}).then(function(data) {
+			const parser = new DOMParser();
+			const html = parser.parseFromString(data, 'text/html');
+
+			let content = html.body.querySelector('main');
+
+			content.querySelectorAll('a').forEach(element => {
+				element.target = "_blank";
+			});
+
+			
+			document.querySelector("#blog").append(content);
+		});
+	</script>
 </body>
 
 </html>
